@@ -1,0 +1,26 @@
+<!-- <body ng-app="app-caesar">
+  <p>
+    Caesar is here!
+  <input ng-model="myInput">
+  <label ng-model="outputValue"></label>
+  <br>
+  <button (click) = "caesar()">CAESAR</button>
+  <br>
+  <button (click) = "back()">BACK</button>
+  </p>
+</body> -->
+<html>
+  <head>
+    <title>Caesar Application</title>
+  </head>
+  <body>
+      Caesar is here!
+    <!-- <input #box (keyup.enter)="caesar(box.value)"> -->
+    <input type="text" #textInput>
+    <input type="text" #cipher>
+    <button (click) = "caesar(textInput.value, cipher.value)"> ENCRYPT CAESAR</button>
+    <p>Result: {{outputValue}}</p>
+    <br>
+    <button (click) = "back()">BACK</button>
+  </body>
+</html>
