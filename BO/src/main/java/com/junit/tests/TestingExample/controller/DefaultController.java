@@ -32,7 +32,7 @@ public class DefaultController {
 	
 	@RequestMapping("")
 	public @ResponseBody String greeting() {
-		return "Welcome to the page";
+		return "Welcome to the page TEST";
 	}
 	
 	@RequestMapping("square/{n}")
