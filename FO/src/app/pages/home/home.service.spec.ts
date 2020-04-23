@@ -5,6 +5,7 @@ import { HttpClientTestingModule, HttpTestingController } from "@angular/common/
 import { HomeService } from './home.service';
 import { HomeModule } from './home.module';
 import { AppModule } from 'src/app/app.module';
+import { baseUrl } from 'src/environments/environment';
 
 describe('Service: Home', () => {
   beforeEach(() => {
@@ -32,4 +33,18 @@ describe('Service: Home', () => {
 
       req.flush(dataToTest)
     }));
-  });
+
+    it('should return text parameter encripted with caesar cipher when postCaesarResults', inject(
+      [HttpTestingController, HomeService],
+      (httpMock: HttpTestingController, service: HomeService) => {
+        let dataToTest = 'def';
+        service.postCaesarResults("abc", 3).subscribe(data => {
+          expect(data).toEqual(dataToTest);
+        });
+
+        let req = httpMock.expectOne(baseUrl + '/caesar');
+        expect(req.request.method).toEqual('POST');
+
+        req.flush(dataToTest)
+      }));
+});
