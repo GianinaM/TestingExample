@@ -49,8 +49,11 @@ describe('CaesarComponent', () => {
     let button = fixture.debugElement.nativeElement.querySelector('button#caesar');
     button.click();
 
+    let cipherNumberInput = fixture.debugElement.nativeNode.querySelector('input#cipherNumber');
+    let textInput = fixture.debugElement.nativeNode.querySelector('input#textInput');
+
     fixture.whenStable().then(() => {
-      expect(component.caesarClicked).toHaveBeenCalled();
+      expect(component.caesarClicked).toHaveBeenCalledWith(textInput.value, cipherNumberInput.value);
     });
   }));
 
