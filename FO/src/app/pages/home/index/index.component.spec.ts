@@ -61,6 +61,11 @@ describe('IndexComponent', () => {
     });
   }));
 
-
+  it('should redirectCaesar when the button is pressed', async(()=> {
+    component.redirectCaesarClicked();
+    fixture.whenStable().then(() => {
+      expect(router.url).toMatch('^.*/caesar$');
+    });
+  }));
 
 });

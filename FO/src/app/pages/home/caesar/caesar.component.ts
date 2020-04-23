@@ -21,11 +21,11 @@ export class CaesarComponent implements OnInit {
     this.outputValue = '???'
   }
 
-  back(){
+  redirectBackClicked(){
     this.router.navigate(['']);
   }
 
-  caesar(value, cipher){
+  caesarClicked(value, cipher){
 
     this.homeService.postCaesarResults(value, cipher).subscribe(
       data => {

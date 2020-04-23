@@ -31,4 +31,33 @@ describe('CaesarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call backClicked function when the button is pressed', async(()=> {
+    spyOn(component, 'redirectBackClicked');
+
+    let button = fixture.debugElement.nativeElement.querySelector('button#redirectBack');
+    button.click();
+
+    fixture.whenStable().then(() => {
+      expect(component.redirectBackClicked).toHaveBeenCalled();
+    });
+  }));
+
+  it('should call caesarClicked function when the button is pressed', async(()=> {
+    spyOn(component, 'caesarClicked');
+
+    let button = fixture.debugElement.nativeElement.querySelector('button#caesar');
+    button.click();
+
+    fixture.whenStable().then(() => {
+      expect(component.caesarClicked).toHaveBeenCalled();
+    });
+  }));
+
+  it('should redirectBack when the button is pressed', async(()=> {
+    component.redirectBackClicked();
+    fixture.whenStable().then(() => {
+      expect(router.url).toMatch('^.*/$');
+    });
+  }));
 });
