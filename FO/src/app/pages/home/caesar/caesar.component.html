@@ -17,9 +17,9 @@
       Caesar is here!
     <!-- <input #box (keyup.enter)="caesar(box.value)"> -->
     <input id="textInput" type="text" #textInput>
-    <input id="cipherNumber" type="text" #cipherNumber>
+    <input id="cipherNumber" type="number" #cipherNumber>
     <button id="caesar" (click) = "caesarClicked(textInput.value, cipherNumber.value)"> ENCRYPT CAESAR</button>
-    <p>Result: {{outputValue}}</p>
+    <p> Result: <label id="outputValue">{{outputValue}}</label></p>
     <br>
     <button id="redirectBack" (click) = "redirectBackClicked()">BACK</button>
   </body>

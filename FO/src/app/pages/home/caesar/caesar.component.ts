@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeService } from '../home.service';
 
@@ -15,10 +15,8 @@ export class CaesarComponent implements OnInit {
     this.outputValue = '300'
   }
 
-
-
   ngOnInit() {
-    this.outputValue = '???'
+    this.outputValue = '?x??'
   }
 
   redirectBackClicked(){
