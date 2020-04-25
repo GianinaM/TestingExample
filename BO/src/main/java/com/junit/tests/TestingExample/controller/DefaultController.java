@@ -3,9 +3,6 @@ package com.junit.tests.TestingExample.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.websocket.server.PathParam;
-
-import org.aspectj.weaver.ast.Var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.junit.tests.TestingExample.service.DefaultService;
 
 @Controller

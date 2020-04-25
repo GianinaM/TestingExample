@@ -16,9 +16,8 @@
   <body>
       Caesar is here!
     <!-- <input #box (keyup.enter)="caesar(box.value)"> -->
-    <input id="textInput" type="text" #textInput>
-    <input id="cipherNumber" type="number" #cipherNumber>
-    <button id="caesar" (click) = "caesarClicked(textInput.value, cipherNumber.value)"> ENCRYPT CAESAR</button>
+    <input [(ngModel)]="textInput" id="textInput" (keyup)="makeCaesar()">
+    <input  [(ngModel)]="cipherNumber" id="cipherNumber" (keyup)="makeCaesar()">
     <p> Result: <label id="outputValue">{{outputValue}}</label></p>
     <br>
     <button id="redirectBack" (click) = "redirectBackClicked()">BACK</button>

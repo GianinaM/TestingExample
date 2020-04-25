@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -48,10 +48,10 @@ describe('CaesarComponent', () => {
     });
   }));
 
-  it('should check output label when function caesar is called', async ()=> {
+  it('should check output label when function makeCaesar is called', async ()=> {
     spyOn(service, 'postCaesarResults').and.returnValue(of('def'));
 
-    component.caesarClicked("abc", "3");
+    component.makeCaesar();
 
     let result = fixture.debugElement.nativeElement.querySelector('label#outputValue');
 
@@ -61,24 +61,6 @@ describe('CaesarComponent', () => {
 
   });
 
-  it('should call caesarClicked function when the button is pressed', async(()=> {
-    spyOn(component, 'caesarClicked');
-
-    let button = fixture.debugElement.nativeElement.querySelector('button#caesar');
-
-    let cipherNumberInput = fixture.debugElement.nativeNode.querySelector('input#cipherNumber');
-    cipherNumberInput.value = 3;
-
-    let textInput = fixture.debugElement.nativeNode.querySelector('input#textInput');
-    textInput.value = "abc";
-
-    button.click();
-
-    fixture.whenStable().then(() => {
-      expect(component.caesarClicked).toHaveBeenCalledWith(textInput.value, cipherNumberInput.value);
-    });
-  }));
-
 
   it('should redirectBack when the button is pressed', async(()=> {
     component.redirectBackClicked();
@@ -86,4 +68,32 @@ describe('CaesarComponent', () => {
       expect(router.url).toMatch('^.*/$');
     });
   }));
+
+  it('should redirectBack when the button is pressed', async(()=> {
+    component.redirectBackClicked();
+    fixture.whenStable().then(() => {
+      expect(router.url).toMatch('^.*/$');
+    });
+  }));
+
+  it('should call makeCaesar encrypt when new character', fakeAsync(() => {
+    spyOn(component, 'makeCaesar');
+
+    setInputValue("input#textInput", "a");
+
+    fixture.detectChanges();
+    expect(component.makeCaesar).toHaveBeenCalled();
+  }));
+
+  // must be called from within fakeAsync due to use of tick()
+  function setInputValue(selector: string, value: string) {
+    tick();
+    let input = fixture.debugElement.nativeElement.querySelector(selector);
+
+    input.dispatchEvent(new Event('keydown'));
+    input.value += value;
+    input.dispatchEvent(new Event('keyup'));
+
+    tick();
+  }
 });
