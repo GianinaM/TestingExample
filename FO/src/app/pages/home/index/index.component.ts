@@ -20,4 +20,8 @@ export class IndexComponent implements OnInit {
   redirectCaesarClicked(){
     this.router.navigate(['','caesar']);
   }
+
+  redirectDecCaesarClicked(){
+    this.router.navigate(['','decrypt-caesar']);
+  }
 }

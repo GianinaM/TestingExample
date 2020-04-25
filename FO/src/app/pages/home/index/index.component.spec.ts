@@ -50,21 +50,30 @@ describe('IndexComponent', () => {
     });
   }));
 
-  it('should call redirectCaesarClicked function when the button is pressed', async(()=> {
-    spyOn(component, 'redirectCaesarClicked');
-
-    let button = fixture.debugElement.nativeElement.querySelector('button#caesarButton');
-    button.click();
-
-    fixture.whenStable().then(() => {
-      expect(component.redirectCaesarClicked).toHaveBeenCalled();
-    });
-  }));
-
   it('should redirectCaesar when the button is pressed', async(()=> {
     component.redirectCaesarClicked();
     fixture.whenStable().then(() => {
       expect(router.url).toMatch('^.*/caesar$');
+    });
+  }));
+
+
+
+  it('should call redirectDecCaesarClicked function when the button is pressed', async(()=> {
+    spyOn(component, 'redirectDecCaesarClicked');
+
+    let button = fixture.debugElement.nativeElement.querySelector('button#decryptCaesarButton');
+    button.click();
+
+    fixture.whenStable().then(() => {
+      expect(component.redirectDecCaesarClicked).toHaveBeenCalled();
+    });
+  }));
+
+  it('should redirectDecryptCaesar when the button is pressed', async(()=> {
+    component.redirectDecCaesarClicked();
+    fixture.whenStable().then(() => {
+      expect(router.url).toMatch('^.*/decrypt-caesar$');
     });
   }));
 
