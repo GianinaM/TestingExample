@@ -13,7 +13,7 @@ import { IndexComponent } from '../index/index.component';
 export class CaesarComponent implements OnInit, OnChanges {
 
   outputValue: string
-  cipherNumber: string
+  shiftNumber: string
   textInput: string
 
   constructor(private router: Router, private homeService: HomeService) {
@@ -27,7 +27,7 @@ export class CaesarComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.outputValue = '?x??'
-    this.cipherNumber = "3"
+    this.shiftNumber = "3"
     this.textInput = ""
   }
 
@@ -37,7 +37,18 @@ export class CaesarComponent implements OnInit, OnChanges {
 
   makeCaesar(){
 
-    this.homeService.postCaesarResults(this.textInput, this.cipherNumber).subscribe(
+    this.homeService.postCaesarResults(this.textInput, this.shiftNumber).subscribe(
+      data => {
+        this.outputValue = data
+      },
+      error => {
+        console.log(JSON.stringify(error));
+      })
+  }
+
+  decryptCaesar(){
+
+    this.homeService.postCaesarDecryptResults(this.textInput, this.shiftNumber).subscribe(
       data => {
         this.outputValue = data
       },

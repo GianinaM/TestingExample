@@ -13,13 +13,15 @@
   <head>
     <title>Caesar Application</title>
   </head>
+  <!-- <input #box (keyup.enter)="caesar(box.value)"> -->
   <body>
-      Caesar is here!
-    <!-- <input #box (keyup.enter)="caesar(box.value)"> -->
+    <p>Caesar is here!</p>
     <input [(ngModel)]="textInput" id="textInput" (keyup)="makeCaesar()">
-    <input  [(ngModel)]="cipherNumber" id="cipherNumber" (keyup)="makeCaesar()">
+    <input  [(ngModel)]="shiftNumber" id="shiftNumber" (keyup)="makeCaesar()">
     <p> Result: <label id="outputValue">{{outputValue}}</label></p>
     <br>
-    <button id="redirectBack" (click) = "redirectBackClicked()">BACK</button>
+    <button id="decryptCaesar" (click) = "decryptCaesar()">Decrypt</button>
+    <br>
+    <button id="redirectBack" (click) = "redirectBackClicked()">Back Home</button>
   </body>
 </html>

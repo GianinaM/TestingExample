@@ -81,4 +81,24 @@ public class DefaultControllerTest {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("efgh")));
 	}
+
+	@Test
+	public void testDecryptCaesarPost() throws Exception{
+
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("shift", "2");
+		params.put("text", "TUVWx");
+
+    	when(defaultService.decryptCaesarString(params.get("text").toString(),
+                                    Integer.parseInt(params.get("shift")))
+        ).thenReturn("WXYZa");
+
+		this.mockMvc
+			.perform(post("/decrypt-caesar")
+				.content(asJsonString(params))
+				.contentType(MediaType.APPLICATION_JSON)
+				.accept(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("WXYZa")));
+	}
 }

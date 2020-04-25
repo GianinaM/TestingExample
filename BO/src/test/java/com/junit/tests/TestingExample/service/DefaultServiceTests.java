@@ -51,4 +51,34 @@ public class DefaultServiceTests {
 	public void caesarStringCapitalizeCipher() {
 		assertEquals("eF", defaultService.caesarString("aB", 4));
 	}
+
+	@Test
+	public void decryptCaesarForNoText(){
+		assertEquals("", defaultService.decryptCaesarString("", 23), "Should return nothing");
+	}
+
+	@Test
+	public void decryptCaesarForNoShift(){
+		assertEquals("a", defaultService.decryptCaesarString("a", 0), "Should be the same as input, no ecryption founded");
+	}
+
+	@Test
+	public void decryptCaesarForOneCharacterWithShift(){
+		assertEquals("a", defaultService.decryptCaesarString("d", 3), "*d* shifted with 3 is *a*");
+	}
+
+	@Test
+	public void decryptCaesarForOverflowCharacter(){
+		assertEquals("w", defaultService.decryptCaesarString("a", 4), "*a* shifted with 4 is *w*");
+	}
+	
+	@Test
+	public void decryptCaesarForUpperCaseCharacter(){
+		assertEquals("W", defaultService.decryptCaesarString("A", 4), "*A* shifted with 4 is *W*");
+	}
+
+	@Test
+	public void decryptCaesarForAnLongText(){
+		assertEquals("abcd", defaultService.decryptCaesarString("xyza", 23));
+	}
 }

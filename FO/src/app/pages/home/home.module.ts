@@ -5,6 +5,7 @@ import { HomeRoutes } from './home.routing';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { CaesarComponent } from './caesar/caesar.component';
+import { DecryptCaesarComponent } from './decrypt-caesar/decrypt-caesar.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { CaesarComponent } from './caesar/caesar.component';
   declarations: [
     IndexComponent,
     HomeComponent,
-    CaesarComponent
+    CaesarComponent,
+    DecryptCaesarComponent
   ]
 })
 export class HomeModule { }
