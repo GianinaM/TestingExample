@@ -1,9 +1,6 @@
-import { Component, OnInit, OnChanges, Input, Output, SimpleChanges, NgModule } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeService } from '../home.service';
- import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { IndexComponent } from '../index/index.component';
 
 @Component({
   selector: 'app-caesar',
@@ -38,17 +35,6 @@ export class CaesarComponent implements OnInit, OnChanges {
   makeCaesar(){
 
     this.homeService.postCaesarResults(this.textInput, this.shiftNumber).subscribe(
-      data => {
-        this.outputValue = data
-      },
-      error => {
-        console.log(JSON.stringify(error));
-      })
-  }
-
-  decryptCaesar(){
-
-    this.homeService.postCaesarDecryptResults(this.textInput, this.shiftNumber).subscribe(
       data => {
         this.outputValue = data
       },

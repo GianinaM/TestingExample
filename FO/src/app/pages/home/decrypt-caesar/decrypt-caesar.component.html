@@ -1,1 +1,14 @@
-<p>decrypt-caesar works!</p>
+<html>
+  <head>
+    <title>Decrypt Caesar Application</title>
+  </head>
+  <!-- <input #box (keyup.enter)="caesar(box.value)"> -->
+  <body>
+    <p>Caesar is here!</p>
+    <input [(ngModel)]="cipherText" id="cipherText" (keyup)="decryptCaesar()">
+    <input  [(ngModel)]="shiftNumber" id="shiftNumber" (keyup)="decryptCaesar()">
+    <p> Result: <label id="outputValue">{{outputValue}}</label></p>
+    <br>
+    <button id="redirectBack" (click) = "redirectBackClicked()">Back Home</button>
+  </body>
+</html>

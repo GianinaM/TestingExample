@@ -58,16 +58,7 @@ describe('CaesarComponent', () => {
     fixture.detectChanges();
     await fixture.whenStable();
     expect(result.textContent).toBe("def");
-
   });
-
-
-  it('should redirectBack when the button is pressed', async(()=> {
-    component.redirectBackClicked();
-    fixture.whenStable().then(() => {
-      expect(router.url).toMatch('^.*/$');
-    });
-  }));
 
   it('should redirectBack when the button is pressed', async(()=> {
     component.redirectBackClicked();

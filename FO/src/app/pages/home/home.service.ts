@@ -27,10 +27,10 @@ export class HomeService {
 
 
   postCaesarDecryptResults(textParam, chiperParam)  : Observable<any>{
-    return this.http.post(baseUrl + '/caesar',
+    return this.http.post(baseUrl + '/descrypt-caesar',
       {
-        text: textParam,
-        cipher: chiperParam
+        cipherText: textParam,
+        shift: chiperParam
       },
       { responseType: 'text' }
       );

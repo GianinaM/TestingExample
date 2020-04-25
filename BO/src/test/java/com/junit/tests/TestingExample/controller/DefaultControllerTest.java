@@ -87,9 +87,9 @@ public class DefaultControllerTest {
 
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("shift", "2");
-		params.put("text", "TUVWx");
+		params.put("cipherText", "TUVWx");
 
-    	when(defaultService.decryptCaesarString(params.get("text").toString(),
+    	when(defaultService.decryptCaesarString(params.get("cipherText").toString(),
                                     Integer.parseInt(params.get("shift")))
         ).thenReturn("WXYZa");
 

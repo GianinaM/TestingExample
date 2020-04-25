@@ -56,6 +56,6 @@ public class DefaultController {
 
 	@PostMapping("decrypt-caesar")
 	public @ResponseBody String decryptCaesar(@RequestBody Map<String, Object> params) {
-		return defaultService.decryptCaesarString(params.get("text").toString(), Integer.parseInt((String) params.get("shift"))).toString();
+		return defaultService.decryptCaesarString(params.get("cipherText").toString(), Integer.parseInt((String) params.get("shift"))).toString();
 	}
 }
